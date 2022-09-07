@@ -1,2 +1,2 @@
-# searchPrettifier
- A engine search prettifier showcasing more data on a initial presentation
+# Gem helper
+A API data interface to check prices for GGGs Path of Exile, utilizing PoE Ninjas data
