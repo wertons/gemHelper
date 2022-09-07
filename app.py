@@ -1,16 +1,20 @@
-from array import array
 from flask import Flask
-app = Flask(__name__)
+from flask_cors import CORS
 
+app = Flask(__name__)
+app.config.from_object(__name__)
+
+DEBUG = True
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 @app.route("/")
 def home():
     return "Hewwo"
 
 
-@app.route("/test", methods=['GET'])
+@app.route("/gemList", methods=['GET'])
 def test():
-    conditions = ["Vaal","Anomalous","Divergent","Phantasmal","Awakened"]
+    conditions = ["Vaal","Anomalous","Divergent","Phantasmal"]
     def key_func(k):
         return k['name']
     import json
@@ -39,7 +43,7 @@ def test():
                         min = data
                         max = data
                         
-
+ 
                     chaos = data["chaosValue"]
                     if chaos > max["chaosValue"]:
                         max = data
@@ -58,7 +62,10 @@ def test():
                 str(max["chaosValue"] - min["chaosValue"]) + " <br>"
             result.append({
                 "name": max["name"],
-                "profit": max["chaosValue"] - min["chaosValue"]
+                "profit": round(max["chaosValue"] - min["chaosValue"]),
+                "icon": max["icon"],
+                "max": max,
+                "min": min,
             })
 
         def profit_fn(l):
