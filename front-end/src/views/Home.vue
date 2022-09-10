@@ -26,7 +26,7 @@ export default {
      * Get a list of gems applying current search options
     */
     getGemList() {
-      const path = "http://localhost:5000/gemList";
+      const path = "http://127.0.0.1:5000/gemList";
       axios.post(path, {
         options: this.getGemFilters()
       })
