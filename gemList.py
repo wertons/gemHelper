@@ -1,9 +1,12 @@
-def getProfitPerGem(corrupted,awakened,altQual,quality):
+def getProfitPerGem(corrupted,awakened,altQual,quality,doubleCorrupt):
     conditions = []
     if not corrupted:
         conditions.append("Vaal")
     if not altQual:
-        conditions.extend(("Anomalous","Divergent","Phantasmal"))
+        conditions.append("Anomalous")
+        conditions.append("Divergent")
+        conditions.append("Phantasmal")
+
     if not awakened:
         conditions.append("Awakened")
     def key_func(k):
@@ -31,9 +34,13 @@ def getProfitPerGem(corrupted,awakened,altQual,quality):
                 if not corrupted: #If filtering out corrupted gems, remove corrupted gem outcomes as well as Vaal gems
                     if 'corrupted' in data:
                         continue
+                else:
+                    if not doubleCorrupt and isDoubleCorrupt(data):
+                        continue
                 if not quality:
                     if 'gemQuality' in data:
                         continue
+   
 
                 if min == False or max == False:
                     min = data
@@ -78,5 +85,7 @@ def isDoubleCorrupt(gem):
                 conditions += 1
         if "Vaal" in gem["name"]:
             conditions += 1
+        
+        return conditions >= 2
     else:
         return False

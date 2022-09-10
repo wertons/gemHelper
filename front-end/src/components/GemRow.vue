@@ -7,7 +7,7 @@
       </span>
     </div>
     <div name="Profit" class="cold-7 p-2">
-      {{gemProfit}} chaos for {{gem.min.variant}} into {{gem.max.variant}}
+      {{gemProfit}} chaos for {{gem.min.variant}} into {{gem.max.variant}} | base cost {{gem.min.chaosValue}} chaos
     </div>
   </li>
 </template>

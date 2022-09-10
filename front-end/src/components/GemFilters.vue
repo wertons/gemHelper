@@ -20,6 +20,14 @@
         </FilterOptionContainer>
         <FilterOptionContainer>
           <div class="form-check text-left ">
+            <input class="form-check-input" type="checkbox" value="" id="doubleCorruptedCheck">
+            <label class="form-check-label" for="doubleCorruptedCheck">
+              Show Double Corrupted Gems
+            </label>
+          </div>
+        </FilterOptionContainer>
+        <FilterOptionContainer>
+          <div class="form-check text-left ">
             <input class="form-check-input" type="checkbox" value="" id="altQualCheck">
             <label class="form-check-label" for="altQualCheck">
               Show Alternate Quality Gems
