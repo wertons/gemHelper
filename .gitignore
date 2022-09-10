@@ -1,0 +1,4 @@
+__pycahcache__
+.venv
+.vscode
+node_modules
