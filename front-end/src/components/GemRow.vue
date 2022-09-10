@@ -1,13 +1,13 @@
 <template>
   <li name="Gem row" class=" d-flex flex-row p-0 mb-2">
     <div  class="col-5 border border-primary p-2 text-left">
-      <img :src=gemIcon alt="Gem Icon" />
+      <img :src=gemIcon alt="Gem Icon" loading="lazy"/>
       <span name="Name">
         {{gemName}}
       </span>
     </div>
     <div name="Profit" class="cold-7 p-2">
-      {{gemProfit}} chaos for {{gem.min.variant}} into {{gem.max.variant}} | base cost {{gem.min.chaosValue}} chaos
+      {{gemProfit}} chaos for {{gem.min.variant ?? "error"}} into {{gem.max.variant ?? "error"}} | base cost {{gem.min.chaosValue}} chaos
     </div>
   </li>
 </template>
