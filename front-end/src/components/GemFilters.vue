@@ -1,0 +1,54 @@
+<template>
+  <div class=" container border border-primary mb-3 p-0" id="gemFilters">
+    <section name="filterOptions" class="d-flex flex-column m-2">
+      <FilterOptionContainer>
+        <div class="form-check text-left ">
+          <input class="form-check-input" type="checkbox" value="" id="awakenedCheck">
+          <label class="form-check-label" for="awakenedCheck">
+            Show Awakened Gems
+          </label>
+        </div>
+      </FilterOptionContainer>
+      <FilterOptionContainer>
+        <div class="form-check text-left ">
+          <input class="form-check-input" type="checkbox" value="" id="corruptedCheck">
+          <label class="form-check-label" for="corruptedCheck">
+            Show Corrupted Gems
+          </label>
+        </div>
+      </FilterOptionContainer>
+      <FilterOptionContainer>
+        <div class="form-check text-left ">
+          <input class="form-check-input" type="checkbox" value="" id="altQualCheck">
+          <label class="form-check-label" for="altQualCheck">
+            Show Alternate Quality Gems
+          </label>
+        </div>
+      </FilterOptionContainer>
+    </section>
+
+    <div class="col-12 border border-top">
+      <button type="button" class="btn btn-primary m-2" @click="$emit('search')">Search</button>
+    </div>
+  </div>
+</template>
+<script lang="ts">
+import Vue from 'vue';
+import axios from 'axios';
+import FilterOptionContainer from './FilterOptionContainer.vue';
+
+export default Vue.extend({
+  name: "GemFilters",
+  data() {
+    return {
+    };
+  },
+  mounted() {
+  },
+  methods: {
+  },
+  components: {
+    FilterOptionContainer,
+  }
+});
+</script>

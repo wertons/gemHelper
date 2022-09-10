@@ -1,5 +1,11 @@
-def getProfitPerGem():
-    conditions = ["Vaal","Anomalous","Divergent","Phantasmal"]
+def getProfitPerGem(corrupted,awakened,altQual):
+    conditions = []
+    if not corrupted:
+        conditions.append("Vaal")
+    if not altQual:
+        conditions.extend(("Anomalous","Divergent","Phantasmal"))
+    if not awakened:
+        conditions.append("Awakened")
     def key_func(k):
         return k['name']
     import json
@@ -22,22 +28,20 @@ def getProfitPerGem():
             min = False
             max = False
             for data in g:
-                if 'corrupted' not in data:
+                if not corrupted: #If filtering out corrupted gems, remove corrupted gem outcomes as well as Vaal gems
+                    if 'corrupted' in data:
+                        continue
+                if min == False or max == False:
+                    min = data
+                    max = data
+                chaos = data["chaosValue"]
+                if chaos > max["chaosValue"]:
+                    max = data
+                if chaos < min["chaosValue"]:
+                    min = data
+                formattedresult += "\n   <br>  " + \
+                    (data["variant"]) + " | " + str(chaos) + " Chaos"
                     
-                    if min == False or max == False:
-                        min = data
-                        max = data
-                        
- 
-                    chaos = data["chaosValue"]
-                    if chaos > max["chaosValue"]:
-                        max = data
-                    if chaos < min["chaosValue"]:
-                        min = data
-                    formattedresult += "\n   <br>  " + \
-                        (data["variant"]) + " | " + str(chaos) + " Chaos"
-                else:
-                    continue
             if max == False or "variant" not in max:
                 return "max is not set"
             if min == False or "variant" not in min:

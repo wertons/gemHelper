@@ -1,5 +1,5 @@
 <template>
-  <li name="Gem row" class="row d-flex flex-row p-0 mb-2">
+  <li name="Gem row" class=" d-flex flex-row p-0 mb-2">
     <div  class="col-5 border border-primary p-2 text-left">
       <img :src=gemIcon alt="Gem Icon" />
       <span name="Name">
