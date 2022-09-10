@@ -22,5 +22,6 @@ def main():
         options["altQualCheck"],
         options["qualityCheck"],
         options["doubleCorruptedCheck"],
+        options["lowConfidenceCheck"],
 
     )
