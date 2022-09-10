@@ -1,4 +1,4 @@
-def getProfitPerGem(corrupted,awakened,altQual):
+def getProfitPerGem(corrupted,awakened,altQual,quality):
     conditions = []
     if not corrupted:
         conditions.append("Vaal")
@@ -31,6 +31,10 @@ def getProfitPerGem(corrupted,awakened,altQual):
                 if not corrupted: #If filtering out corrupted gems, remove corrupted gem outcomes as well as Vaal gems
                     if 'corrupted' in data:
                         continue
+                if not quality:
+                    if 'gemQuality' in data:
+                        continue
+
                 if min == False or max == False:
                     min = data
                     max = data
@@ -63,3 +67,16 @@ def getProfitPerGem(corrupted,awakened,altQual):
         result = sorted(result, key=profit_fn, reverse=True)
 
         return result
+def isDoubleCorrupt(gem):
+    if 'corrupted' in gem:
+        conditions = 0
+        if 'gemQuality' in gem:
+            if gem["gemQuality"] == 23:
+                conditions += 1
+        if 'gemLevel' in gem:
+            if gem["gemLevel"] == 21:
+                conditions += 1
+        if "Vaal" in gem["name"]:
+            conditions += 1
+    else:
+        return False

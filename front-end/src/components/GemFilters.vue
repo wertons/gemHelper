@@ -1,30 +1,43 @@
 <template>
   <div class=" container border border-primary mb-3 p-0" id="gemFilters">
-    <section name="filterOptions" class="d-flex flex-column m-2">
-      <FilterOptionContainer>
-        <div class="form-check text-left ">
-          <input class="form-check-input" type="checkbox" value="" id="awakenedCheck">
-          <label class="form-check-label" for="awakenedCheck">
-            Show Awakened Gems
-          </label>
-        </div>
-      </FilterOptionContainer>
-      <FilterOptionContainer>
-        <div class="form-check text-left ">
-          <input class="form-check-input" type="checkbox" value="" id="corruptedCheck">
-          <label class="form-check-label" for="corruptedCheck">
-            Show Corrupted Gems
-          </label>
-        </div>
-      </FilterOptionContainer>
-      <FilterOptionContainer>
-        <div class="form-check text-left ">
-          <input class="form-check-input" type="checkbox" value="" id="altQualCheck">
-          <label class="form-check-label" for="altQualCheck">
-            Show Alternate Quality Gems
-          </label>
-        </div>
-      </FilterOptionContainer>
+    <section name="filterOptions" class="d-flex  m-2">
+      <div class="col-6 p-0">
+        <FilterOptionContainer>
+          <div class="form-check text-left ">
+            <input class="form-check-input" type="checkbox" value="" id="awakenedCheck">
+            <label class="form-check-label" for="awakenedCheck">
+              Show Awakened Gems
+            </label>
+          </div>
+        </FilterOptionContainer>
+        <FilterOptionContainer>
+          <div class="form-check text-left ">
+            <input class="form-check-input" type="checkbox" value="" id="corruptedCheck">
+            <label class="form-check-label" for="corruptedCheck">
+              Show Corrupted Gems
+            </label>
+          </div>
+        </FilterOptionContainer>
+        <FilterOptionContainer>
+          <div class="form-check text-left ">
+            <input class="form-check-input" type="checkbox" value="" id="altQualCheck">
+            <label class="form-check-label" for="altQualCheck">
+              Show Alternate Quality Gems
+            </label>
+          </div>
+        </FilterOptionContainer>
+      </div>
+      <div class="col-6 p-0">
+        <FilterOptionContainer>
+          <div class="form-check text-left ">
+            <input class="form-check-input" type="checkbox" value="" id="qualityCheck" checked>
+            <label class="form-check-label" for="qualityCheck">
+              Show Gems with Quality
+            </label>
+          </div>
+        </FilterOptionContainer>
+      </div>
+
     </section>
 
     <div class="col-12 border border-top">

@@ -20,4 +20,5 @@ def main():
         options["corruptedCheck"],
         options["awakenedCheck"],
         options["altQualCheck"],
+        options["qualityCheck"]
     )
