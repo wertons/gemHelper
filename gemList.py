@@ -1,4 +1,4 @@
-def getProfitPerGem(corrupted,awakened,altQual,quality,doubleCorrupt):
+def getProfitPerGem(corrupted,awakened,altQual,quality,doubleCorrupt,lowConfidence):
     conditions = []
     if not corrupted:
         conditions.append("Vaal")
@@ -39,6 +39,9 @@ def getProfitPerGem(corrupted,awakened,altQual,quality,doubleCorrupt):
                         continue
                 if not quality:
                     if 'gemQuality' in data:
+                        continue
+                if not lowConfidence:
+                    if data["count"] < 15:
                         continue
    
 
