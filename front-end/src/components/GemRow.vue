@@ -1,5 +1,7 @@
 <template>
-  <li name="Gem row" class=" d-flex flex-row p-0 mb-2">
+  <li name="Gem row" class=" d-flex flex-row p-0 mb-2"
+  v-if="matchesFilter()"
+  >
     <div  class="col-5 border border-primary p-2 text-left">
       <img :src=gemIcon alt="Gem Icon" loading="lazy"/>
       <span name="Name">
@@ -31,7 +33,13 @@ export default Vue.extend({
 
   },
   methods: {
+    matchesFilter(){
 
+      let searchParams = document.querySelector("#searchBar").value;
+      console.log(searchParams);
+
+      return this.gemName.toLowerCase().includes(searchParams.toLowerCase());
+    }
   },
 });
 </script>

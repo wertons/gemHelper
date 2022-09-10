@@ -56,10 +56,9 @@ def getProfitPerGem(corrupted,awakened,altQual,quality,doubleCorrupt,lowConfiden
                 formattedresult += "\n   <br>  " + \
                     (data["variant"]) + " | " + str(chaos) + " Chaos"
                     
-            if max == False or "variant" not in max:
+            if max == False or "variant" not in max or min == False or "variant" not in min:
                 continue
-            if min == False or "variant" not in min:
-                continue
+
             formattedresult += "\n   <br>  max: " + \
                 max["variant"] + " | min: " + min["variant"] + "<br> profit is " + \
                 str(max["chaosValue"] - min["chaosValue"]) + " <br>"
