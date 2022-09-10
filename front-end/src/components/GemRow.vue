@@ -36,7 +36,6 @@ export default Vue.extend({
     matchesFilter(){
 
       let searchParams = document.querySelector("#searchBar").value;
-      console.log(searchParams);
 
       return this.gemName.toLowerCase().includes(searchParams.toLowerCase());
     }
