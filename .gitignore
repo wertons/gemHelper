@@ -4,4 +4,4 @@
 /node_modules
 .editorconfig
 .gitattributes
-*/gemDumps
+/gemDumps
