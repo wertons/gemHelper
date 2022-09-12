@@ -19,11 +19,9 @@ def getProfitPerGem(corrupted, awakened, altQual, quality, doubleCorrupt, lowCon
     data = json.load(json_file)
     data = sorted(data['lines'], key=key_func)
     result = []
-    formattedresult = ""
     for k, g in groupby(data, key=key_func):
         if any(condition in k for condition in conditions):
             continue
-        formattedresult += "\n <br> " + k
 
         g = list(g)
 
@@ -54,15 +52,13 @@ def getProfitPerGem(corrupted, awakened, altQual, quality, doubleCorrupt, lowCon
                     max = data
             if chaos < min["chaosValue"]:
                     min = data
-            formattedresult += "\n   <br>  " + \
-                    (data["variant"]) + " | " + str(chaos) + " Chaos"
 
         if max == False or "variant" not in max or min == False or "variant" not in min:
-                continue
+            continue
 
-        formattedresult += "\n   <br>  max: " + \
-                max["variant"] + " | min: " + min["variant"] + "<br> profit is " + \
-                str(max["chaosValue"] - min["chaosValue"]) + " <br>"
+        if max["gemLevel"] == min["gemLevel"]:
+            continue
+        
         result.append({
                 "name": max["name"],
                 "profit": round(max["chaosValue"] - min["chaosValue"]),
@@ -98,23 +94,22 @@ def isDoubleCorrupt(gem):
 
 def validateJson():
     from datetime import datetime
-    latest = datetime.today().strftime('%Y%m%d')
-    import os
-    exists = False
-    folder = "./gemDumps/"
-    for file in os.listdir(folder):
+    latest = datetime.today().strftime('%Y%m%d') #Create filename based on date, we use this to check if the file is up to date
 
-        if latest in file:
-            exists = True
+    import os
+    folder = "./gemDumps/"
+    if not os.path.exists(folder): #Create folder if it does not exists, as it is not tracked by git and thus is liable to dissapear
+        os.mkdir("gemDumps") 
+
+    for file in os.listdir(folder):
+        if latest+(".json") == file:
             return open(folder+file) 
-    if not exists:
-        json = getJsonFromNinja()
-        replaceFile(json,latest)
-        validateJson()
+
+    replaceFile(getJsonFromNinja(),latest)
+    return validateJson()
 
 def getJsonFromNinja():
     from urllib.request import Request, urlopen
-    import json
     from urllib.error import HTTPError
     url = "https://poe.ninja/api/data/itemoverview?league=Kalandra&type=SkillGem"
     try:
@@ -131,7 +126,7 @@ def getJsonFromNinja():
 
 def replaceFile(json, fileName):
     import os
-    for file in os.listdir("."):
+    for file in os.listdir("./gemDumps/"):
         if file.endswith(".json"):
             os.remove(file)
     file = open("./gemDumps/"+fileName+".json", "w")
