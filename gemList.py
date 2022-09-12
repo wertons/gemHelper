@@ -58,7 +58,7 @@ def getProfitPerGem(corrupted, awakened, altQual, quality, doubleCorrupt, lowCon
 
         if max["gemLevel"] == min["gemLevel"]:
             continue
-        
+
         result.append({
                 "name": max["name"],
                 "profit": round(max["chaosValue"] - min["chaosValue"]),
@@ -126,9 +126,10 @@ def getJsonFromNinja():
 
 def replaceFile(json, fileName):
     import os
-    for file in os.listdir("./gemDumps/"):
+    folder = "./gemDumps/"
+    for file in os.listdir(folder):
         if file.endswith(".json"):
-            os.remove(file)
-    file = open("./gemDumps/"+fileName+".json", "w")
+            os.remove(folder+file)
+    file = open(folder+fileName+".json", "w")
     file.write(json)
     file.close
