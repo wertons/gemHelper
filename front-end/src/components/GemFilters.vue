@@ -1,6 +1,6 @@
 <template>
-  <div class=" container border border-primary mb-3 p-0" id="gemFilters">
-    <section name="filterOptions" class="d-flex  m-2">
+  <div class=" container border border-primary rounded-bottom rounded-5 border-2 mb-3 p-0" id="gemFilters">
+    <section name="filterOptions" class="d-flex  m-4">
       <div class="col-6 p-0">
 
         <FilterOptionContainer>
@@ -21,7 +21,7 @@
         </FilterOptionContainer>
         <FilterOptionContainer>
           <div class="form-check text-left ">
-            <input class="form-check-input" type="checkbox" value="" id="awakenedCheck">
+            <input class="form-check-input" type="checkbox" value="" id="awakenedCheck" checked>
             <label class="form-check-label" for="awakenedCheck">
               Show Awakened Gems
             </label>
@@ -58,7 +58,17 @@
     </section>
 
     <div class="col-12 border border-top">
-      <button type="button" class="btn btn-primary m-2" @click="$emit('search')">Search</button>
+      <div class="container d-flex p-2">
+        <div class=" col-10">
+          <input type="search" id="searchBar" class="form-control" placeholder="Search ..." aria-label="Searchbar" />
+
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-primary  " @click="$emit('search')">Apply filters</button>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </template>

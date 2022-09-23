@@ -29,4 +29,7 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+*{
+  padding: 0;
+}
 </style>
